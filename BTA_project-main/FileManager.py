@@ -10,7 +10,8 @@ class FileManager:
         # and returns the text.
 
     def save_data(self, filename, data):
-        pass
+        with open(filename, "w") as file:
+            file.write(data)
         # TODO:
         # Implement a process that writes the contents of `data` to the file `filename`
 
