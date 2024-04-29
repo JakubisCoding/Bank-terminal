@@ -16,7 +16,9 @@ class FileManager:
         # Implement a process that writes the contents of `data` to the file `filename`
 
     def read_json(self, json_file_path):
-        pass
+        with open(json_file_path, "r") as file:
+            data = json.load(file)
+            return data
         # TODO:
         # Implement a process that reads the contents of a file whose path is stored in the `json_file_path` variable 
         # and returns a list of dictionaries
