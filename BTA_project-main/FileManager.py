@@ -30,11 +30,10 @@ class FileManager:
         # Implement a process that writes a list of dictionaries from list_of_dicts to the `json_file_path` file
 
     def add_to_json(self, data, json_file_path):
-        with open(json_file_path, "r+") as file:
-            # Load existing data
-            existing_data = json.load(file)
-            # Append new data to existing data
-            existing_data.append(data)
+        content = self.read_json(json_file_path)
+        content.append(data)
+        self.write_json(content, json_file_path)
+
         # TODO:
         # Implement a process that gets the dictionary in the data variable and adds it to the JSON `json_file_path`
 
