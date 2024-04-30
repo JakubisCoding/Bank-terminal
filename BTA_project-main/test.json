@@ -1,1 +1,1 @@
-{"new_key": "new_value"}[{"existing_key": "existing_value"}][{"existing_key": "existing_value"}]
+[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}, {"id": 3, "name": "Charlie"}]
