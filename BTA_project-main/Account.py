@@ -46,7 +46,19 @@ class Account:
         # self.write_to_history(history_message)
 
     def debit(self, amount):
-        pass
+        try:
+            amount = int(amount)
+            if self.balance >= amount:
+                if amount > 0:
+                    self.balance -= amount
+                    history_message = HistoryMessages.debit("success", amount, self.balance)
+                    self.write_to_history(history_message)
+            else:
+                history_message = HistoryMessages.debit("failure", amount, self.balance)
+                self.write_to_history(history_message)
+                print("Invalid amount for debit!")
+        except ValueError:
+            print("Invalid amount for debit!")
         # TODO:
         # implement account debits with all necessary checks
         # amount must be a integer greater than 0
