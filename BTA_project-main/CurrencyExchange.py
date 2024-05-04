@@ -1,5 +1,6 @@
 from FileManager import FileManager
 from HistoryMessages import HistoryMessages
+import requests 
 
 class CurrencyExchange:
     def __init__(self, balance = 0):
@@ -16,7 +17,9 @@ class CurrencyExchange:
         # self.file_manager 
 
     def get_exchange_rates(self):
-        pass
+        url = "https://fake-api.apps.berlintech.ai/api/currency_exchange"
+        response = requests.get(url)
+        return response.text
         # Implement a process that sends a get request to the link 
         # and returns the resulting dictionary.
     
