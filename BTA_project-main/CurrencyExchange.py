@@ -9,7 +9,7 @@ class CurrencyExchange:
         
 
     def write_to_history(self, hist_dict):
-        pass 
+        self.file_manager.write_json(hist_dict, self.hist_file_path)
         # TODO:
         # Comment and refine the code below so that the dictionary 
         # from hist_dict is added to hist.json
@@ -24,7 +24,29 @@ class CurrencyExchange:
         # and returns the resulting dictionary.
     
     def exchange_currency(self, currency_from, currency_to, amount):
-        pass
+        try:
+            amount = int(amount)
+            exchange_rates = self.get_exchange_rates()
+            if currency_from not in exchange_rates or currency_to not in exchange_rates:
+                    raise ValueError("Currency not supported.")
+            exchange_rate_from = exchange_rates[currency_from]
+            exchange_rate_to = exchange_rates[currency_to]
+            if amount > 0:
+                converted_amount = amount * (exchange_rate_to / exchange_rate_from)
+                history_message = HistoryMessages.exchange("success", amount, converted_amount, currency_from, currency_to)
+                self.write_to_history(history_message)
+                return converted_amount
+            else:
+                
+                history_message = HistoryMessages.exchange("failure", amount, None, currency_from, currency_to)
+                self.write_to_history(history_message)
+                
+        except ValueError:
+            history_message = HistoryMessages.exchange("failure", amount, None, currency_from, currency_to)
+            self.write_to_history(history_message)
+            
+            
+
 
         # implement a process that transfers the specified amount from currency `currency_from` 
         # to currency `currency_to` and, if positive, returns the amount in the new currency
