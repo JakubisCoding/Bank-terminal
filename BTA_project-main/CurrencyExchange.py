@@ -9,7 +9,7 @@ class CurrencyExchange:
         
 
     def write_to_history(self, hist_dict):
-        self.file_manager.write_json(hist_dict, self.hist_file_path)
+        self.file_manager.add_to_json(hist_dict, self.hist_file_path)
         # TODO:
         # Comment and refine the code below so that the dictionary 
         # from hist_dict is added to hist.json
