@@ -44,6 +44,8 @@ class CurrencyExchange:
         except ValueError:
             history_message = HistoryMessages.exchange("failure", amount, None, currency_from, currency_to)
             self.write_to_history(history_message)
+            print('Currency exchange failed!')
+
             
             
 
