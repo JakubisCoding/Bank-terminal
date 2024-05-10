@@ -17,7 +17,6 @@ class Account:
         # self.file_manager 
 
     def deposit(self, amount):
-        
         try:
             amount = int(amount)
             if amount > 0:
@@ -30,6 +29,7 @@ class Account:
                 print("Invalid amount for deposit!")
         except ValueError:
             print("Invalid amount for deposit!")
+        
 
         # TODO:
         # implement the deposit process with all necessary checks
@@ -88,9 +88,13 @@ class Account:
         history = self.file_manager.read_json(self.hist_file_path)
         history_string = ""
         for entry in history:
-                entry_string = self.dict_to_string(entry)
-                history_string += entry_string + "\n" 
-                return history_string
+            entry_string = self.dict_to_string(entry)
+            history_string += entry_string + "\n" 
+            return history_string
+        
+
+        
+
         # TODO:
         # implement a process that returns transaction history line by line
         # use the dict_to_string method to create a string from a dictionary
